@@ -11,17 +11,18 @@ def min_distance ( distance, queue ):
 
 def print_path ( parent, j ):
     if parent[ j ] == -1:
-        print ( j, end = " " )
+        print ( j, end = " -> " )
         return
     print_path( parent, parent[ j ] )
-    print( j, end = " " )
+    print( j, end = " -> " )
     
 def print_solution ( distance, parent ):
     source = 0
     print( "Vertice\t\tDistancia desde el inicio\t\tCamino" )
     for i in range ( 1, len( distance ) ):
-        print( f"{ source } --> { i }\t\t{ distance[ i ] }" )
+        print( f"{ source } --> { i }\t\t{ distance[ i ] }", end = "\t\t\t\t\t" )
         print_path( parent, i )
+        print( "" )
 
 def dijkstra ( graph, source ):
     row = len( graph )
